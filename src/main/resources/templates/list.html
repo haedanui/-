@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <style>
+        th, td {
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<h1>리스트</h1>
+<table style="border: solid; border-collapse: collapse;border: 1px">
+    <thead>
+    <tr>
+        <th>이름</th>
+        <th>주민등록등본</th>
+        <th>가족관계증명서</th>
+        <th>출생신고서</th>
+        <th>사망신고서</th>
+        <th>발급목록</th>
+        <th>삭제</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="resident : ${list}">
+        <td th:text="${resident.name}">Resident Name</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<span th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}">
+    <a th:href="@{${#httpServletRequest.requestURI}(page=${i})}" th:text="${i + 1}">1</a>
+</span>
+
+</body>
+</html>
